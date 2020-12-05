@@ -41,8 +41,24 @@ app.get('/help', (req, res) => {
 app.get('/weather', (req, res) => {
     res.send({
         forecast: 'snowing',
-        loacation: 'Mumbai'
+        location: 'Mumbai'
     });
+})
+
+app.get('/help/*', (req, res) => {
+    res.render('error', {
+        title: '404',
+        name: 'Rakesh',
+        message: 'Help article not found'
+    })
+})
+
+app.get('*', (req, res) => {
+    res.render('error', {
+        title: '404',
+        name: 'Rakesh',
+        message: 'Page not found'
+    })
 })
 
 app.listen(3000, () => {
